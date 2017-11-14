@@ -10882,6 +10882,7 @@ function changePage(page) {
 }
 
 function sendPrice(price) {
+	console.log("SEND PRICE" + price);
 	return {
 		type: SEND_PRICE,
 		amount: price
@@ -10889,7 +10890,7 @@ function sendPrice(price) {
 }
 
 function sendPurchase(purchase) {
-	console.log("SEND PRICE");
+	console.log("SEND Purchase" + purchase);
 	return {
 		type: SEND_PURCHASE,
 		html: purchase
