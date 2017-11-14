@@ -18806,7 +18806,7 @@ var Item = function (_Component) {
 			var hash = window.location.href;
 			console.log(hash);
 			var split = hash.split("");
-			var join = split.slice(33, 44).join("");
+			var join = split.slice(33, 43).join("");
 			console.log(join);
 			var url = void 0;
 			var item = void 0;
@@ -18815,13 +18815,13 @@ var Item = function (_Component) {
 			var prefixC = "../../dist/images/";
 
 			if (join == "catalog/ite") {
-				name = split.slice(35, split.length);
+				name = split.slice(47, split.length);
 				item = "t-shirt-" + name.join("") + "-view.jpg";
 				url = prefixC + item;
 			}
 
 			if (join == "/catalog/it") {
-				name = split.slice(36, split.length);
+				name = split.slice(48, split.length);
 				item = "t-shirt-" + name.join("") + "-view.jpg";
 				url = prefixC + item;
 			}
