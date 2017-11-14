@@ -2,7 +2,7 @@
   "name": "TV_Apocalypse",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.js",
+  "main": "server.js",
   "scripts": {
     "gulp": "gulp",
     "webpack": "webpack",
