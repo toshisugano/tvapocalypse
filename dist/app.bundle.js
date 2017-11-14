@@ -17857,7 +17857,7 @@ var About = function About(props) {
 						"This website/blog is new and I intend to post my thoughts on this blog on a regular basis. Please support my work by making a donation or purchasing stuff from my catalog.",
 						_react2.default.createElement("br", null)
 					),
-					_react2.default.createElement("img", { id: "manBoy", src: "../dist/images/manBoy.jpg" }),
+					_react2.default.createElement("img", { id: "manBoy", src: "./images/manboy.jpg" }),
 					_react2.default.createElement(
 						"h3",
 						{ className: "itemDescription" },
