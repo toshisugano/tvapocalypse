@@ -5,7 +5,8 @@ var port = process.env.PORT || 8080;
 
 app.use('/', express.static(__dirname + '/dist'));
 app.use('/css', express.static(__dirname + '/dist/css')); 
-app.use('/scripts', express.static(__dirname + '/dist/scripts'));  
+app.use('/scripts', express.static(__dirname + '/dist/scripts'));   
+app.use('/images', express.static(__dirname + '/dist/images'));
 
 
 app.get('/', function(req, res ){ 
