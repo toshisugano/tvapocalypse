@@ -3,7 +3,7 @@ var express = require('express');
 
 var port = process.env.PORT || 8080;    
 
-app.get('/*', function(req, res ){ 
+app.get('/', function(req, res ){ 
   res.sendFile(__dirname + '/dist/index.html');
 });   
 
