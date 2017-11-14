@@ -18617,7 +18617,7 @@ var gallery = function (_Component) {
 								if (_this4.state.inventory[item] !== undefined) {
 									var name = that.name;
 									var itemUrl = '/catalog/item/' + name;
-									var imgUrl = '/images/' + that.src1;
+									var imgUrl = that.src1;
 									var price = "$" + that.price;
 									var purchase = that.purchase;
 									return _react2.default.createElement(
