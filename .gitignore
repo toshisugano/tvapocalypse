@@ -1,7 +1,7 @@
 
 # production
 /dist
-/src/images
+
 /node_modules
 
 # misc
