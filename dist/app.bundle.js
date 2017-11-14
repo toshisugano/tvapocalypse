@@ -18804,6 +18804,7 @@ var Item = function (_Component) {
 		key: 'parseHref',
 		value: function parseHref() {
 			var hash = window.location.href;
+			console.log(hash);
 			var split = hash.split("");
 			var join = split.slice(22, 33).join("");
 			console.log(join);
