@@ -18812,7 +18812,7 @@ var Item = function (_Component) {
 			var item = void 0;
 			var name = void 0;
 
-			var prefixC = "../../dist/images/";
+			var prefixC = "/";
 
 			if (join == "catalog/ite") {
 				name = split.slice(46, split.length);
