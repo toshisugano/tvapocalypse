@@ -18815,13 +18815,13 @@ var Item = function (_Component) {
 			var prefixC = "../../dist/images/";
 
 			if (join == "catalog/ite") {
-				name = split.slice(47, split.length);
+				name = split.slice(46, split.length);
 				item = "t-shirt-" + name.join("") + "-view.jpg";
 				url = prefixC + item;
 			}
 
 			if (join == "/catalog/it") {
-				name = split.slice(48, split.length);
+				name = split.slice(47, split.length);
 				item = "t-shirt-" + name.join("") + "-view.jpg";
 				url = prefixC + item;
 			}
