@@ -1,5 +1,5 @@
 var express = require('express');
-    psth = require('path');
+    path = require('path');
     app = express(); 
 
 var port = process.env.PORT || 8000;   
