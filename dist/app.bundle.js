@@ -16738,7 +16738,7 @@ var App = function (_Component) {
 
 			var hash = window.location.href;
 			var split = hash.split("");
-			var join = split.slice(22, 33).join("");
+			var join = split.slice(33, 44).join("");
 			var length = hash.length;
 			var url = void 0;
 			var header = document.getElementById('headerImg');
@@ -16746,8 +16746,8 @@ var App = function (_Component) {
 			var appWidth = document.getElementById('app').offsetWidth;
 
 			var prefixA = "./images/";
-			var prefixB = "../dist/images/";
-			var prefixC = "../../dist/images/";
+			var prefixB = "/images/";
+			var prefixC = "/images/";
 
 			if (hash.charAt(length - 1) === "/") {
 				url = prefixA;
