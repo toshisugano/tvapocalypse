@@ -18829,6 +18829,8 @@ var Item = function (_Component) {
 	}, {
 		key: 'resetCurrItem',
 		value: function resetCurrItem(arr, url) {
+			console.log("arr :" + arr);
+			console.log("name :" + url);
 			this.setState({
 				currItem: arr,
 				name: url
