@@ -18806,6 +18806,7 @@ var Item = function (_Component) {
 			var hash = window.location.href;
 			var split = hash.split("");
 			var join = split.slice(22, 33).join("");
+			console.log(join);
 			var url = void 0;
 			var item = void 0;
 			var name = void 0;
