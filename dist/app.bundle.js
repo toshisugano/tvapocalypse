@@ -19228,7 +19228,7 @@ var PreviewMain = function (_Component) {
 						);
 					}
 					if (item[0] === "image") {
-						var imgSrc = "../../dist/images/" + item[1];
+						var imgSrc = "/images/" + item[1];
 						var imgWidth = { width: item[2] + "%" };
 						return _react2.default.createElement('img', { key: index, className: 'floaterImg', src: imgSrc, style: imgWidth });
 					}
