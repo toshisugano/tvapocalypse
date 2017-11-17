@@ -19346,7 +19346,9 @@ var PreviewSide = function (_Component) {
 						{ key: index },
 						_react2.default.createElement(
 							_reactRouterDom.Link,
-							{ to: newStr },
+							{ to: newStr, onClick: function onClick() {
+									window.scrollTo(0, 0);
+								} },
 							_react2.default.createElement(
 								'h3',
 								null,
