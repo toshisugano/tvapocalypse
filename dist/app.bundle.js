@@ -17936,7 +17936,12 @@ var Blog = function (_Component) {
 			blogjson: [],
 			currIndex: null,
 			currTitle: "",
-			currArticle: ""
+			currArticle: "",
+			currYear: "",
+			currMonth: "",
+			currDate: "",
+			currAuthor: "",
+			currTime: ""
 		};
 		_this.resetState = _this.resetState.bind(_this);
 		_this.getJSON = _this.getJSON.bind(_this);
@@ -17971,22 +17976,11 @@ var Blog = function (_Component) {
 			_axios2.default.get(url).then(function (res) {
 				console.log("RES : ");
 				console.log(res);
-				if (res === null || undefined || "") {
-					setTimeout(function () {
-						_this3.getJSON();
-					}, 500);
-				} else {
-					_this3.resetState(res);
-				}
+				_this3.resetState(res);
 			}).catch(function (error) {
 				console.log(error.response);
 			});
 		}
-
-		/*shouldComponentUpdate(newProps, nextState) { 
-  	return (newProps.match === "undefined");
-  }*/
-
 	}, {
 		key: 'resetState',
 		value: function resetState(response) {
@@ -17997,6 +17991,11 @@ var Blog = function (_Component) {
 			var responseData = this.state.blogjson;
 			var currTitle = "";
 			var currArticle = "";
+			var currYear = "";
+			var currMonth = "";
+			var currDate = "";
+			var currAuthor = "";
+			var currTime = "";
 
 			if (!response.data) {
 				index = response.split("").map(function (letter) {
@@ -18014,6 +18013,11 @@ var Blog = function (_Component) {
 			if (index == 0) {
 				currTitle = responseData[0].title;
 				currArticle = responseData[0].article;
+				currYear = responseData[0].year;
+				currMonth = responseData[0].month;
+				currDate = responseData[0].date;
+				currAuthor = responseData[0].author;
+				currTime = responseData[0].time;
 			}
 
 			if (index !== 0) {
@@ -18021,6 +18025,11 @@ var Blog = function (_Component) {
 					if (obj.title == index) {
 						currTitle = index;
 						currArticle = obj.article;
+						currYear = obj.year;
+						currMonth = obj.month;
+						currDate = obj.date;
+						currAuthor = obj.author;
+						currTime = obj.time;
 					}
 				});
 			}
@@ -18028,7 +18037,12 @@ var Blog = function (_Component) {
 			this.setState({
 				blogjson: responseData,
 				currTitle: currTitle,
-				currArticle: currArticle
+				currArticle: currArticle,
+				currYear: currYear,
+				currMonth: currMonth,
+				currDate: currDate,
+				currAuthor: currAuthor,
+				currTime: currTime
 			});
 		}
 	}, {
@@ -18043,7 +18057,15 @@ var Blog = function (_Component) {
 					_react2.default.createElement(
 						'li',
 						null,
-						_react2.default.createElement(_previewMain2.default, { currTitle: this.state.currTitle, currArticle: this.state.currArticle })
+						_react2.default.createElement(_previewMain2.default, {
+							currTitle: this.state.currTitle,
+							currArticle: this.state.currArticle,
+							currYear: this.state.currYear,
+							currMonth: this.state.currMonth,
+							currDate: this.state.currDate,
+							currAuthor: this.state.currAuthor,
+							currTime: this.state.currTime
+						})
 					),
 					_react2.default.createElement(
 						'li',
@@ -19174,7 +19196,11 @@ var PreviewMain = function (_Component) {
 		_this.state = {
 			title: null,
 			article: null,
-			blogjson: null
+			year: null,
+			month: null,
+			date: null,
+			author: null,
+			time: null
 		};
 		_this.resetState = _this.resetState.bind(_this);
 		_this.returnArticle = _this.returnArticle.bind(_this);
@@ -19200,7 +19226,11 @@ var PreviewMain = function (_Component) {
 			this.setState({
 				title: response.currTitle,
 				article: response.currArticle,
-				blogjson: response.blogjson
+				year: response.currYear,
+				month: response.currMonth,
+				date: response.currDate,
+				author: response.currAuthor,
+				time: response.currTime
 			});
 		}
 	}, {
@@ -19252,7 +19282,10 @@ var PreviewMain = function (_Component) {
 					_react2.default.createElement(
 						'p',
 						null,
-						'Posted by : Josh - November 12, 2017'
+						'Posted by : ',
+						this.state.author,
+						' - ',
+						this.state.date
 					)
 				),
 				_react2.default.createElement(
@@ -19380,7 +19413,15 @@ var PreviewSide = function (_Component) {
 						this.renderLists()
 					)
 				),
-				_react2.default.createElement('div', { id: 'previewPosts' })
+				_react2.default.createElement(
+					'div',
+					{ id: 'searchButton' },
+					_react2.default.createElement(
+						'h2',
+						null,
+						'SEARCH ARTICLES'
+					)
+				)
 			);
 		}
 	}]);
