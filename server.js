@@ -9,7 +9,7 @@ app.use('/scripts', express.static(__dirname + '/dist/scripts'));
 app.use('../dist/images', express.static(__dirname + '/dist/images'));
 
 
-app.get('/', function(req, res ){ 
+app.get('*', function(req, res ){ 
   res.sendFile(__dirname + '/dist/index.html');
 });   
 
