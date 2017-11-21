@@ -18508,7 +18508,7 @@ var Footer = function Footer() {
 	return _react2.default.createElement(
 		"div",
 		{ className: "row" },
-		_react2.default.createElement("img", { id: "footerImg", src: "./images/sofa-bg-l.gif" })
+		_react2.default.createElement("img", { id: "footerImg", src: "/images/sofa-bg-l.gif" })
 	);
 };
 
