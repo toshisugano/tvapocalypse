@@ -17983,12 +17983,17 @@ var Blog = function (_Component) {
 			if (newProps.match.params.id) {
 				newProps = newProps.match.params.id;
 			}
-			var url = 'http://www.thesoogie.com/blogjson';
-			_axios2.default.get(url).then(function (res) {
-				_this2.resetState(newProps);
-			}).catch(function (error) {
-				console.log(error.response);
-			});
+			if (this.state.blogjson == []) {
+				var url = 'http://www.thesoogie.com/blogjson';
+				_axios2.default.get(url).then(function (res) {
+					_this2.resetState(newProps);
+				}).catch(function (error) {
+					console.log(error.response);
+				});
+			}
+			if (this.state.blogjson !== []) {
+				this.resetState(newProps);
+			}
 		}
 	}, {
 		key: 'getJSON',
