@@ -17983,8 +17983,6 @@ var Blog = function (_Component) {
 			console.log("GETJSON triggered");
 			var url = 'http://www.thesoogie.com/blogjson';
 			_axios2.default.get(url).then(function (res) {
-				console.log("RES : ");
-				console.log(res);
 				_this3.resetState(res);
 			}).catch(function (error) {
 				console.log(error.response);
@@ -17993,7 +17991,8 @@ var Blog = function (_Component) {
 	}, {
 		key: 'resetState',
 		value: function resetState(response) {
-
+			console.log("RESET STATE : ");
+			console.log(response);
 			var index = 0;
 			var responseData = this.state.blogjson;
 			var currTitle = "";
