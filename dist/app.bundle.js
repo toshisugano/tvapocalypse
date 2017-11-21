@@ -17960,6 +17960,7 @@ var Blog = function (_Component) {
 		value: function componentDidMount() {
 			var _this2 = this;
 
+			console.log("CURRTITLE : " + this.state.currTitle);
 			setTimeout(function () {
 				_this2.getJSON();
 			}, 100);
@@ -17967,7 +17968,7 @@ var Blog = function (_Component) {
 	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(newProps) {
-
+			console.log("recieved new props :" + newProps);
 			if (newProps.match.params.id) {
 				newProps = newProps.match.params.id;
 			}
@@ -17992,7 +17993,7 @@ var Blog = function (_Component) {
 		key: 'resetState',
 		value: function resetState(response) {
 
-			var index = this.props.title || 0;
+			var index = 0;
 			var responseData = this.state.blogjson;
 			var currTitle = "";
 			var currArticle = "";
@@ -19220,6 +19221,7 @@ var PreviewMain = function (_Component) {
 	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(newProps) {
+			console.log(newProps);
 			this.resetState(newProps);
 		}
 	}, {
