@@ -18010,7 +18010,7 @@ var Blog = function (_Component) {
 			//response = loquesha
 			console.log("RESET STATE : ");
 			console.log(response);
-			var index = void 0;
+			var index = 0;
 			var responseData = this.state.blogjson;
 			var currTitle = "";
 			var currArticle = "";
