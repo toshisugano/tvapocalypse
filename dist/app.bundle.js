@@ -18025,9 +18025,9 @@ var Blog = function (_Component) {
 			}
 
 			if (index !== 0) {
+				index = _vars2.default.replaceChar(index, "_", " ");
 				console.log("NEW INDEX : ");
 				console.log(index);
-				index = _vars2.default.replaceChar(index, "_", " ");
 				responseData.forEach(function (obj, i) {
 					if (obj.title == index) {
 						currTitle = index;
