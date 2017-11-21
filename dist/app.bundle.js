@@ -17991,6 +17991,8 @@ var Blog = function (_Component) {
 	}, {
 		key: 'resetState',
 		value: function resetState(response) {
+			//when /blog/loquesha is reloaded
+			//response = loquesha
 			console.log("RESET STATE : ");
 			console.log(response);
 			var index = 0;
@@ -18005,6 +18007,7 @@ var Blog = function (_Component) {
 			//This is for when newProps are received 
 			if (!response.data) {
 				index = _vars2.default.replaceChar(response, "_", " ");
+				console.log("index Check : " + index);
 			}
 
 			if (response.data) {
