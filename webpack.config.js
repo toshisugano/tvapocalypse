@@ -10,7 +10,7 @@ module.exports = {
 	},
 	watch : true,
 	devServer: {
-	      historyApiFallback: true,
+	      historyApiFallback: true 
 	  },
 	module : {
 		loaders : [
