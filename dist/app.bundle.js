@@ -18015,6 +18015,7 @@ var Blog = function (_Component) {
 			}
 
 			if (index == 0) {
+				console.log("INDEX == 0");
 				currTitle = responseData[0].title;
 				currArticle = responseData[0].article;
 				currYear = responseData[0].year;
@@ -18025,6 +18026,7 @@ var Blog = function (_Component) {
 			}
 
 			if (index !== 0) {
+				console.log("INDEX !== 0");
 				index = _vars2.default.replaceChar(index, "_", " ");
 				responseData.forEach(function (obj, i) {
 					if (obj.title == index) {
