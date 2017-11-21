@@ -17968,7 +17968,8 @@ var Blog = function (_Component) {
 	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(newProps) {
-			console.log("recieved new props :" + newProps);
+			console.log("recieved new props :");
+			console.log(newProps);
 			if (newProps.match.params.id) {
 				newProps = newProps.match.params.id;
 			}
