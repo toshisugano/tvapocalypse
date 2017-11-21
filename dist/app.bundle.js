@@ -17955,25 +17955,41 @@ var Blog = function (_Component) {
 		return _this;
 	}
 
+	/* Here is the problem :
+ 	When component mounts, getJSON is called
+ 	It takes a long time to receive data which becomes this.state.blogjson
+ 	New props is received - loquesha before data from api is fetched
+ 	ResetState is called with Loquesha as argument
+ 	But because the data is not present, nothing happens
+ 	Then finally data is recieved
+ 	but this retriggers resetState which renders component with 0 as argument
+ 	Instead of poor loquesha
+ 	So component is rendered with 0
+ 
+ */
+
 	_createClass(Blog, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			var _this2 = this;
-
-			console.log("CURRTITLE : " + this.state.currTitle);
-			setTimeout(function () {
-				_this2.getJSON();
-			}, 100);
+			console.log("COMPONENT MOUNTED");
+			this.getJSON();
 		}
 	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(newProps) {
-			console.log("recieved new props :");
+			var _this2 = this;
+
+			console.log("received new props :");
 			console.log(newProps);
 			if (newProps.match.params.id) {
 				newProps = newProps.match.params.id;
 			}
-			this.resetState(newProps);
+			var url = 'http://www.thesoogie.com/blogjson';
+			_axios2.default.get(url).then(function (res) {
+				_this2.resetState(newProps);
+			}).catch(function (error) {
+				console.log(error.response);
+			});
 		}
 	}, {
 		key: 'getJSON',
