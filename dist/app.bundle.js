@@ -18029,6 +18029,8 @@ var Blog = function (_Component) {
 				console.log("NEW INDEX : ");
 				console.log(index);
 				responseData.forEach(function (obj, i) {
+					console.log("OBJ.TITLE : ");
+					console.log(obj.title);
 					if (obj.title == index) {
 						currTitle = index;
 						currArticle = obj.article;
