@@ -17901,6 +17901,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(9);
@@ -17964,8 +17966,7 @@ var Blog = function (_Component) {
  	Then finally data is recieved
  	but this retriggers resetState which renders component with 0 as argument
  	Instead of poor loquesha
- 	So component is rendered with 0
- 
+ 	So component is rendered with 0 
  */
 
 	_createClass(Blog, [{
@@ -18023,7 +18024,7 @@ var Blog = function (_Component) {
 			//This is for when newProps are received 
 			if (!response.data) {
 				index = _vars2.default.replaceChar(response, "_", " ");
-				console.log("index Check : " + index);
+				console.log("index Check : " + (typeof index === 'undefined' ? 'undefined' : _typeof(index)));
 			}
 
 			if (response.data) {
