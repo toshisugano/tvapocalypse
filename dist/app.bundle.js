@@ -17971,6 +17971,7 @@ var Blog = function (_Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			alert("COMPONENT MOUNTED");
+			console.log(this.state.blogjson);
 			this.getJSON();
 		}
 	}, {
