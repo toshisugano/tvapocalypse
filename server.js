@@ -36,4 +36,8 @@ app.get('/blog/:id', function(req, res ){
   res.sendFile(__dirname + '/dist/blog.html');
 });  
 
+app.get('/blogjson', function(req, res){
+  res.sendFile(__dirname + '/blog.json');
+})
+
 app.listen(port);

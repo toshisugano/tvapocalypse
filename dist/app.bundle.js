@@ -17967,11 +17967,19 @@ var Blog = function (_Component) {
  	So component is rendered with 0 
  */
 
+	//when getjson is called
+	//1. make ajax call to server to get blog.json
+	//make a get request to /blogjson
+	//2. make ajax call to server to get mongodata
+
+	//3. resetState with the blog.json
+	//4. Convert if needed and then Save blogjson
+
 	_createClass(Blog, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			alert("COMPONENT MOUNTED");
-			console.log("Initial this.state.blogjson.currTitle :" + this.state.blogjson.currTitle);
+			//alert("COMPONENT MOUNTED");
+			//console.log("Initial this.state.blogjson.currTitle :"+this.state.blogjson.currTitle);
 			this.getJSON();
 		}
 	}, {
@@ -17979,13 +17987,13 @@ var Blog = function (_Component) {
 		value: function componentWillReceiveProps(newProps) {
 			var _this2 = this;
 
-			alert("received new props :" + newProps);
+			//alert("received new props :" + newProps); 
 			if (newProps.match.params.id) {
 				newProps = newProps.match.params.id;
 			}
-			console.log("This.state.blogjson :" + this.state.blogjson.currTitle);
+			//console.log("This.state.blogjson :"+this.state.blogjson.currTitle);
 			if (this.state.blogjson.currTitle == undefined) {
-				var url = 'http://www.thesoogie.com/blogjson';
+				var url = '/blogjson';
 				_axios2.default.get(url).then(function (res) {
 					_this2.resetState(newProps);
 				}).catch(function (error) {
@@ -18000,8 +18008,10 @@ var Blog = function (_Component) {
 		value: function getJSON() {
 			var _this3 = this;
 
-			alert("GETJSON triggered");
-			var url = 'http://www.thesoogie.com/blogjson';
+			//get url from thesoogie server and retrieve data
+			//take that data and then 
+			//alert("GETJSON triggered");
+			var url = '/blogjson';
 			_axios2.default.get(url).then(function (res) {
 				_this3.resetState(res);
 			}).catch(function (error) {
@@ -18013,7 +18023,7 @@ var Blog = function (_Component) {
 		value: function resetState(response) {
 			//when /blog/loquesha is reloaded
 			//response = loquesha
-			alert("RESET STATE : " + response);
+			//alert("RESET STATE : " + response);
 
 			var index = "0";
 			var responseData = this.state.blogjson;
@@ -18034,7 +18044,7 @@ var Blog = function (_Component) {
 			}
 
 			if (index == "0") {
-				alert("INDEX : " + index);
+				//alert("INDEX : "+index);
 				currTitle = responseData[0].title;
 				currArticle = responseData[0].article;
 				currYear = responseData[0].year;
@@ -18046,7 +18056,7 @@ var Blog = function (_Component) {
 
 			if (index !== "0") {
 				index = _vars2.default.replaceChar(index, "_", " ");
-				alert("INDEX : " + index);
+				//alert("INDEX : " +index); 
 				responseData.forEach(function (obj, i) {
 					if (obj.title == index) {
 						currTitle = index;
