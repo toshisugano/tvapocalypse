@@ -17970,7 +17970,7 @@ var Blog = function (_Component) {
 	_createClass(Blog, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			console.log("COMPONENT MOUNTED");
+			alert("COMPONENT MOUNTED");
 			this.getJSON();
 		}
 	}, {
@@ -17978,8 +17978,7 @@ var Blog = function (_Component) {
 		value: function componentWillReceiveProps(newProps) {
 			var _this2 = this;
 
-			console.log("received new props :");
-			console.log(newProps);
+			alert("received new props :" + newProps);
 			if (newProps.match.params.id) {
 				newProps = newProps.match.params.id;
 			}
@@ -18000,7 +17999,7 @@ var Blog = function (_Component) {
 		value: function getJSON() {
 			var _this3 = this;
 
-			console.log("GETJSON triggered");
+			alert("GETJSON triggered");
 			var url = 'http://www.thesoogie.com/blogjson';
 			_axios2.default.get(url).then(function (res) {
 				_this3.resetState(res);
@@ -18013,9 +18012,9 @@ var Blog = function (_Component) {
 		value: function resetState(response) {
 			//when /blog/loquesha is reloaded
 			//response = loquesha
-			console.log("RESET STATE : ");
+			alert("RESET STATE : " + response);
 			console.log(response);
-			var index = 0;
+			var index = "0";
 			var responseData = this.state.blogjson;
 			var currTitle = "";
 			var currArticle = "";
@@ -18035,6 +18034,7 @@ var Blog = function (_Component) {
 			}
 
 			if (index == "0") {
+				alert("INDEX : " + index);
 				currTitle = responseData[0].title;
 				currArticle = responseData[0].article;
 				currYear = responseData[0].year;
@@ -18044,9 +18044,9 @@ var Blog = function (_Component) {
 				currTime = responseData[0].time;
 			}
 
-			if (index !== 0) {
+			if (index !== "0") {
 				index = _vars2.default.replaceChar(index, "_", " ");
-				console.log("NEW INDEX : ");
+				alert("INDEX : " + index);
 				console.log(index);
 				responseData.forEach(function (obj, i) {
 					if (obj.title == index) {
