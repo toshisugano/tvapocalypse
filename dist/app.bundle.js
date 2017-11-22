@@ -17956,18 +17956,6 @@ var Blog = function (_Component) {
 		return _this;
 	}
 
-	/* Here is the problem :
- 	When component mounts, getJSON is called
- 	It takes a long time to receive data which becomes this.state.blogjson
- 	New props is received - loquesha before data from api is fetched
- 	ResetState is called with Loquesha as argument
- 	But because the data is not present, nothing happens
- 	Then finally data is recieved
- 	but this retriggers resetState which renders component with 0 as argument
- 	Instead of poor loquesha
- 	So component is rendered with 0 
- */
-
 	//when getjson is called
 	//1. make ajax call to server to get blog.json
 	//make a get request to /blogjson
@@ -18018,7 +18006,7 @@ var Blog = function (_Component) {
 				//Update client with retrieved server side json 
 				_this3.resetState(res);
 				//Update server json with mongo json
-				_this3.updateBlogjson();
+				//this.updateBlogjson(); 
 			}).catch(function (error) {
 				console.log(error.response);
 			});

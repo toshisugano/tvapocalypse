@@ -15,8 +15,7 @@ app.use('/scripts', express.static(__dirname + '/dist/scripts'));
 //app.use('../dist/images', express.static(__dirname + '/dist/images'));
 
 console.log("Running");
-
-var currTitle = "";
+ 
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/dist/index.html');
@@ -41,8 +40,13 @@ app.get('/blogjson', function(req, res){
 })
 
 app.post('/blogjson', function(req, res){
-  console.log("JSON RECEIVED : " + req);
-  fs.writeFile("/blog.json", req,  function(){
+  console.log("JSON RECEIVED : ");
+  console.log(req);
+  var file = path.normalize(__dirname + '/blog.json');
+  fs.writeFile(file, req, function(err){
+  	if (err) {
+  		return console.log(err);
+  	}
   	console.log("file saved");
   });
 
