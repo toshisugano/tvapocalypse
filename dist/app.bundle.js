@@ -18088,8 +18088,8 @@ var Blog = function (_Component) {
 		//GET data from database and save to server JSON file
 
 	}, {
-		key: 'updateBlogJson',
-		value: function updateBlogJson() {
+		key: 'updateBlogjson',
+		value: function updateBlogjson() {
 			var url = 'http://www.thesoogie.com/blogjson';
 			//Call data from db
 
