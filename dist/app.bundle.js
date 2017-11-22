@@ -17982,7 +17982,7 @@ var Blog = function (_Component) {
 			}
 			//console.log("This.state.blogjson :"+this.state.blogjson.currTitle);
 			if (this.state.blogjson.currTitle == undefined) {
-				var url = '/blogjson';
+				var url = 'http://www.thesoogie.com/blogjson';;
 				_axios2.default.get(url).then(function (res) {
 					_this2.resetState(newProps);
 				}).catch(function (error) {
@@ -18000,13 +18000,13 @@ var Blog = function (_Component) {
 			//get url from thesoogie server and retrieve data
 			//take that data and then 
 			//alert("GETJSON triggered");
-			var url = '/blogjson';
+			var url = 'http://www.thesoogie.com/blogjson';
 			//Fetch data from server 
 			_axios2.default.get(url).then(function (res) {
 				//Update client with retrieved server side json 
 				_this3.resetState(res);
 				//Update server json with mongo json
-				_this3.updateBlogjson();
+				//this.updateBlogjson(); 
 			}).catch(function (error) {
 				console.log(error.response);
 			});
