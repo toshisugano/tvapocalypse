@@ -2,8 +2,7 @@ var express = require('express');
 var path = require('path');
 var renderToString = require('react-dom/server').renderToString;
 var app = express(); 
-
-//var AppBlog = require('./src/components/app-blog').default; 
+  
 
 var port = process.env.PORT || 8080;    
 
@@ -39,5 +38,9 @@ app.get('/blog/:id', function(req, res ){
 app.get('/blogjson', function(req, res){
   res.sendFile(__dirname + '/blog.json');
 })
+
+app.post('/blogjson', function(req, res){
+  console.log("JSON RECEIVED : " + req);
+});
 
 app.listen(port);

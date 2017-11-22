@@ -17952,6 +17952,7 @@ var Blog = function (_Component) {
 		};
 		_this.resetState = _this.resetState.bind(_this);
 		_this.getJSON = _this.getJSON.bind(_this);
+		_this.updateBlogjson = _this.updateBlogjson.bind(_this);
 		return _this;
 	}
 
@@ -18012,8 +18013,12 @@ var Blog = function (_Component) {
 			//take that data and then 
 			//alert("GETJSON triggered");
 			var url = '/blogjson';
+			//Fetch data from server 
 			_axios2.default.get(url).then(function (res) {
+				//Update client with retrieved server side json 
 				_this3.resetState(res);
+				//Update server json with mongo json
+				_this3.updateBlogJson();
 			}).catch(function (error) {
 				console.log(error.response);
 			});
@@ -18023,8 +18028,7 @@ var Blog = function (_Component) {
 		value: function resetState(response) {
 			//when /blog/loquesha is reloaded
 			//response = loquesha
-			//alert("RESET STATE : " + response);
-
+			//alert("RESET STATE : " + response); 
 			var index = "0";
 			var responseData = this.state.blogjson;
 			var currTitle = "";
@@ -18079,6 +18083,23 @@ var Blog = function (_Component) {
 				currDate: currDate,
 				currAuthor: currAuthor,
 				currTime: currTime
+			});
+		}
+		//GET data from database and save to server JSON file
+
+	}, {
+		key: 'updateBlogjson',
+		value: function updateBlogjson() {
+			var url = 'http://www.thesoogie.com/blogjson';
+			//Call data from db
+			axios.get(url).then(function (res) {
+				//Send data back to server 
+				//Server to save onto blog.json
+				axios.post('/blogjson', res).then(function (res) {
+					console.log(res);
+				}).catch(function (error) {
+					console.log(error);
+				});
 			});
 		}
 	}, {
