@@ -17971,7 +17971,7 @@ var Blog = function (_Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			alert("COMPONENT MOUNTED");
-			console.log(this.state.blogjson.currTitle);
+			console.log("Initial this.state.blogjson.currTitle :" + this.state.blogjson.currTitle);
 			this.getJSON();
 		}
 	}, {
@@ -17983,7 +17983,7 @@ var Blog = function (_Component) {
 			if (newProps.match.params.id) {
 				newProps = newProps.match.params.id;
 			}
-			console.log("This.state.blogjson :" + this.state.blogjson);
+			console.log("This.state.blogjson :" + this.state.blogjson.currTitle);
 			if (this.state.blogjson.currTitle == "") {
 				var url = 'http://www.thesoogie.com/blogjson';
 				_axios2.default.get(url).then(function (res) {
