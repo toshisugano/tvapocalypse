@@ -17970,6 +17970,7 @@ var Blog = function (_Component) {
 	_createClass(Blog, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
+			alert("COMPONENT MOUNTED");
 			console.log("Initial this.state.blogjson.currTitle :" + this.state.blogjson.currTitle);
 			this.getJSON();
 		}
@@ -17978,6 +17979,7 @@ var Blog = function (_Component) {
 		value: function componentWillReceiveProps(newProps) {
 			var _this2 = this;
 
+			alert("received new props :" + newProps);
 			if (newProps.match.params.id) {
 				newProps = newProps.match.params.id;
 			}
@@ -17998,6 +18000,7 @@ var Blog = function (_Component) {
 		value: function getJSON() {
 			var _this3 = this;
 
+			alert("GETJSON triggered");
 			var url = 'http://www.thesoogie.com/blogjson';
 			_axios2.default.get(url).then(function (res) {
 				_this3.resetState(res);
@@ -18008,6 +18011,9 @@ var Blog = function (_Component) {
 	}, {
 		key: 'resetState',
 		value: function resetState(response) {
+			//when /blog/loquesha is reloaded
+			//response = loquesha
+			alert("RESET STATE : " + response);
 
 			var index = "0";
 			var responseData = this.state.blogjson;
@@ -18040,6 +18046,7 @@ var Blog = function (_Component) {
 
 			if (index !== "0") {
 				index = _vars2.default.replaceChar(index, "_", " ");
+				alert("INDEX : " + index);
 				responseData.forEach(function (obj, i) {
 					if (obj.title == index) {
 						currTitle = index;
