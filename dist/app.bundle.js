@@ -18093,11 +18093,11 @@ var Blog = function (_Component) {
 			var url = 'http://www.thesoogie.com/blogjson';
 			//Call data from db
 
-			axios.get(url).then(function (res) {
+			_axios2.default.get(url).then(function (res) {
 				alert("updateBLogJSON called : " + res);
 				//Send data back to server 
 				//Server to save onto blog.json
-				axios.post('/blogjson', res).then(function (response) {
+				_axios2.default.post('/blogjson', res).then(function (response) {
 					console.log("RESPONSE FROM AXIOS POST : " + response);
 				}).catch(function (error) {
 					console.log(error);
