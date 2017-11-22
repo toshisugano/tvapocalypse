@@ -17982,6 +17982,7 @@ var Blog = function (_Component) {
 			if (newProps.match.params.id) {
 				newProps = newProps.match.params.id;
 			}
+			console.log("This.state.blogjson :" + this.state.blogjson);
 			if (this.state.blogjson == []) {
 				var url = 'http://www.thesoogie.com/blogjson';
 				_axios2.default.get(url).then(function (res) {
@@ -18013,7 +18014,7 @@ var Blog = function (_Component) {
 			//when /blog/loquesha is reloaded
 			//response = loquesha
 			alert("RESET STATE : " + response);
-			console.log(response);
+
 			var index = "0";
 			var responseData = this.state.blogjson;
 			var currTitle = "";
@@ -18026,7 +18027,6 @@ var Blog = function (_Component) {
 			//This is for when newProps are received 
 			if (!response.data) {
 				index = _vars2.default.replaceChar(response, "_", " ");
-				console.log("index Check : " + index);
 			}
 
 			if (response.data) {
@@ -18047,7 +18047,6 @@ var Blog = function (_Component) {
 			if (index !== "0") {
 				index = _vars2.default.replaceChar(index, "_", " ");
 				alert("INDEX : " + index);
-				console.log(index);
 				responseData.forEach(function (obj, i) {
 					if (obj.title == index) {
 						currTitle = index;
