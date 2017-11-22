@@ -17971,7 +17971,7 @@ var Blog = function (_Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			alert("COMPONENT MOUNTED");
-			console.log(this.state.blogjson);
+			console.log(this.state.blogjson.currTitle);
 			this.getJSON();
 		}
 	}, {
@@ -17984,7 +17984,7 @@ var Blog = function (_Component) {
 				newProps = newProps.match.params.id;
 			}
 			console.log("This.state.blogjson :" + this.state.blogjson);
-			if (this.state.blogjson == []) {
+			if (this.state.blogjson.currTitle == "") {
 				var url = 'http://www.thesoogie.com/blogjson';
 				_axios2.default.get(url).then(function (res) {
 					_this2.resetState(newProps);
