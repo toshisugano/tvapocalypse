@@ -18006,7 +18006,7 @@ var Blog = function (_Component) {
 				//Update client with retrieved server side json 
 				_this3.resetState(res);
 				//Update server json with mongo json
-				//this.updateBlogjson(); 
+				_this3.updateBlogjson();
 			}).catch(function (error) {
 				console.log(error.response);
 			});
@@ -18085,11 +18085,13 @@ var Blog = function (_Component) {
 				alert("updateBLogJSON called : " + res);
 				//Send data back to server 
 				//Server to save onto blog.json
-				_axios2.default.post('/blogjson', res).then(function (response) {
-					console.log("RESPONSE FROM AXIOS POST : " + response);
-				}).catch(function (error) {
-					console.log(error);
-				});
+				//Axios.post('/blogjson', res)
+				//.then((response)=>{
+				//console.log("RESPONSE FROM AXIOS POST : "+ response);
+				//})
+				//.catch((error)=>{
+				//console.log(error);
+				//});
 			});
 		}
 	}, {
