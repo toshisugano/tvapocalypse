@@ -18018,7 +18018,7 @@ var Blog = function (_Component) {
 				//Update client with retrieved server side json 
 				_this3.resetState(res);
 				//Update server json with mongo json
-				_this3.updateBlogJson();
+				_this3.updateBlogjson();
 			}).catch(function (error) {
 				console.log(error.response);
 			});
