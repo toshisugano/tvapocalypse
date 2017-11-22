@@ -17984,15 +17984,14 @@ var Blog = function (_Component) {
 				newProps = newProps.match.params.id;
 			}
 			console.log("This.state.blogjson :" + this.state.blogjson.currTitle);
-			if (this.state.blogjson.currTitle == "") {
+			if (this.state.blogjson.currTitle == undefined) {
 				var url = 'http://www.thesoogie.com/blogjson';
 				_axios2.default.get(url).then(function (res) {
 					_this2.resetState(newProps);
 				}).catch(function (error) {
 					console.log(error.response);
 				});
-			}
-			if (this.state.blogjson !== []) {
+			} else {
 				this.resetState(newProps);
 			}
 		}
