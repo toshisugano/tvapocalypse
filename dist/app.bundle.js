@@ -18018,8 +18018,7 @@ var Blog = function (_Component) {
 				//Update client with retrieved server side json 
 				_this3.resetState(res);
 				//Update server json with mongo json
-				//this.updateBlogJson();
-				alert("AM I WORKING???");
+				_this3.updateBlogJson();
 			}).catch(function (error) {
 				console.log(error.response);
 			});
@@ -18089,13 +18088,13 @@ var Blog = function (_Component) {
 		//GET data from database and save to server JSON file
 
 	}, {
-		key: 'updateBlogjson',
-		value: function updateBlogjson() {
+		key: 'updateBlogJson',
+		value: function updateBlogJson() {
 			var url = 'http://www.thesoogie.com/blogjson';
 			//Call data from db
-			alert("updateBLogJSON called : " + res);
-			axios.get(url).then(function (res) {
 
+			axios.get(url).then(function (res) {
+				alert("updateBLogJSON called : " + res);
 				//Send data back to server 
 				//Server to save onto blog.json
 				axios.post('/blogjson', res).then(function (response) {
