@@ -18098,7 +18098,7 @@ var Blog = function (_Component) {
 				//Send data back to server 
 				//Server to save onto blog.json
 				axios.post('/blogjson', res).then(function (response) {
-					console.log(response);
+					console.log("RESPONSE FROM AXIOS POST : " + response);
 				}).catch(function (error) {
 					console.log(error);
 				});
