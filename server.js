@@ -1,6 +1,7 @@
 var express = require('express'); 
 var path = require('path');
 var renderToString = require('react-dom/server').renderToString;
+var fs = require('fs');
 var app = express(); 
   
 
@@ -41,6 +42,10 @@ app.get('/blogjson', function(req, res){
 
 app.post('/blogjson', function(req, res){
   console.log("JSON RECEIVED : " + req);
+  fs.writeFile("/blog.json", req,  function(){
+  	console.log("file saved");
+  });
+
 });
 
 app.listen(port);
