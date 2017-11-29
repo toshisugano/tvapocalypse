@@ -1,21 +1,34 @@
 var express = require('express'); 
 var path = require('path');
+var cors = require('cors');
+var bodyParser = require('body-parser');
+var stream = require('stream');
 var renderToString = require('react-dom/server').renderToString;
 var fs = require('fs');
-var app = express(); 
-  
+var app = express();  
 
-var port = process.env.PORT || 8080;    
+var port = process.env.PORT || 8080;   
+
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});  
 
 app.use('/', express.static(__dirname + '/dist'));
 app.use('/blog/css', express.static(__dirname + '/dist/css')); 
 app.use('/catalog/css', express.static(__dirname + '/dist/css'));
 app.use('/css', express.static(__dirname + '/dist/css')); 
 app.use('/scripts', express.static(__dirname + '/dist/scripts'));   
+app.use(cors());
 //app.use('../dist/images', express.static(__dirname + '/dist/images'));
 
-console.log("Running");
- 
+
+var urlencodedParser = bodyParser.urlencoded({
+    extended : false
+}); 
+
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/dist/index.html');
@@ -37,19 +50,54 @@ app.get('/blog/:id', function(req, res ){
 
 app.get('/blogjson', function(req, res){
   res.sendFile(__dirname + '/blog.json');
-})
+});
 
-app.post('/blogjson', function(req, res){
-  console.log("JSON RECEIVED : ");
-  console.log(req);
-  var file = path.normalize(__dirname + '/blog.json');
-  fs.writeFile(file, req, function(err){
-  	if (err) {
-  		return console.log(err);
-  	}
-  	console.log("file saved");
+app.get('/inventoryjson', function(req, res){
+  console.log("req received");
+  res.sendFile(__dirname + '/dist/test.json');
+});
+
+app.post('/postjson', urlencodedParser, function(req, res){
+  console.log("JSON RECEIVED : "); 
+  
+  var obj = Object.keys(req.body)[0];
+  console.log(JSON.parse(JSON.stringify(obj)));
+
+  var writeStream = fs.createWriteStream(__dirname + '/dist/test.json');
+  var objStream = new stream.Readable();
+  objStream.push(JSON.stringify(obj));
+  objStream.push(null);
+
+  objStream.on('data', function(chunk){
+    writeStream.write(chunk);
   });
+  
+  //var readStream = fs.createReadStream(obj);
+ 
+  //req.pipe(writeStream);  
+
+  /*req.on('end', function() {
+      res.writeHead(200, {'content-type': 'text/plain'})
+      res.write('Upload Complete!\n');
+      res.end();
+    });*/
 
 });
 
 app.listen(port);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

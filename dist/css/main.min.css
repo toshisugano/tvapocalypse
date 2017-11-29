@@ -108,14 +108,15 @@ hr {
   display: block; }
 
 .previewMain {
-  margin-left: -40px;
+  margin-left: -20px;
+  padding-left: 25px;
   padding-top: 15px;
   float: left;
   border: solid white 1px;
   display: inline;
   position: relative;
   background-color: #9b1fb5;
-  width: 80%;
+  width: 75%;
   min-height: 400px;
   margin-bottom: 20px; }
 
@@ -243,7 +244,8 @@ hr {
   display: inline;
   position: relative;
   background-color: #9b1fb5;
-  width: 20%; }
+  width: 20%;
+  margin-bottom: 30px; }
 
 #searchButton {
   width: 100%;
@@ -372,6 +374,19 @@ hr {
   display: inline-block;
   position: relative; }
 
+.previewSideHr {
+  background-color: #a0d61d;
+  border: solid 3px #a0d61d;
+  width: 200px;
+  margin-right: 20px;
+  margin-top: -1px;
+  padding-bottom: 10px;
+  display: inline-block;
+  position: relative; }
+
+.previewHeader {
+  padding-left: 20px; }
+
 .itemName {
   text-align: center;
   margin-bottom: -15px; }
@@ -388,7 +403,8 @@ hr {
   margin-top: -15px; }
 
 .itemDetailImg {
-  width: 100%; }
+  width: 100%;
+  margin-left: -20px; }
 
 .itemDetail1 {
   background-color: #f5f3e0;
@@ -418,6 +434,13 @@ hr {
 @media (max-width: 900px) {
   .itemList {
     width: 50%; } }
+
+@media (max-width: 550px) {
+  .itemDetail1 {
+    width: 100%; }
+  .itemDetail2 {
+    float: left;
+    width: 100%; } }
 
 @media (max-width: 500px) {
   .itemList {

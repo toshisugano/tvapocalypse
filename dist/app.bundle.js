@@ -17970,6 +17970,8 @@ var Blog = function (_Component) {
 			//alert("COMPONENT MOUNTED");
 			//console.log("Initial this.state.blogjson.currTitle :"+this.state.blogjson.currTitle);
 			this.getJSON();
+
+			/* ****** remove this and then chage url to www.thesoogie.com*/
 		}
 	}, {
 		key: 'componentWillReceiveProps',
@@ -17982,15 +17984,20 @@ var Blog = function (_Component) {
 			}
 			//console.log("This.state.blogjson :"+this.state.blogjson.currTitle);
 			if (this.state.blogjson.currTitle == undefined) {
+				//if state is undefined, then reset state with newprops
 				var url = '/blogjson';
 				_axios2.default.get(url).then(function (res) {
+					//change to running reset with res
 					_this2.resetState(newProps);
 				}).catch(function (error) {
 					console.log(error.response);
 				});
-			} else {
-				this.resetState(newProps);
 			}
+			//if state is defined
+			//run axios with new props as argu
+			else {
+					this.resetState(newProps);
+				}
 		}
 	}, {
 		key: 'getJSON',
@@ -18295,10 +18302,9 @@ var Catalog = function (_Component) {
 			(function () {
 				return new Promise(function (resolve, reject) {
 					var sumItems = void 0;
-					var url = 'http://www.thesoogie.com/inventoryjson';
-
+					var url = '/inventoryjson';
 					_axios2.default.get(url).then(function (res) {
-						sumItems = res.data.length;
+						sumItems = JSON.parse(res.data).length;
 						resolve(sumItems);
 					}).catch(function (error) {
 						console.log(error.response);
@@ -18653,9 +18659,10 @@ var gallery = function (_Component) {
 			var _this3 = this;
 
 			return new Promise(function (resolve, reject) {
-				var url = 'http://www.thesoogie.com/inventoryjson';
+				var url = '/inventoryjson';
 				_axios2.default.get(url).then(function (res) {
-					var arr = res.data;
+					console.log(res);
+					var arr = JSON.parse(res.data);
 					_this3.setState({
 						inventory: arr
 					});
@@ -19463,19 +19470,11 @@ var PreviewSide = function (_Component) {
 						null,
 						'LATEST POSTS :'
 					),
+					_react2.default.createElement('hr', { className: 'itemDetailHr' }),
 					_react2.default.createElement(
 						'ul',
 						null,
 						this.renderLists()
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ id: 'searchButton' },
-					_react2.default.createElement(
-						'h2',
-						null,
-						'SEARCH ARTICLES'
 					)
 				)
 			);
