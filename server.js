@@ -43,6 +43,10 @@ app.get('/catalog/:id', function(req, res ){
   res.sendFile(__dirname + '/dist/blog.html'); 
 }); 
 
+app.get('/catalog/item/:id', function(req, res ){  
+  res.sendFile(__dirname + '/dist/blog.html'); 
+}); 
+
 app.get('/blog/:id', function(req, res ){  
   currTitle = req.params.id;
   res.sendFile(__dirname + '/dist/blog.html');
