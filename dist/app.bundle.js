@@ -38032,7 +38032,7 @@ var navBar = function (_Component) {
 			var _this3 = this;
 
 			_vars2.default.setVars();
-
+			//desktop nav items
 			var navList = this.state.links.map(function (item, index) {
 				var hash = item.toLowerCase();
 				var ref = '/' + hash;
@@ -38071,14 +38071,20 @@ var navBar = function (_Component) {
 					{ key: index, className: 'navItemLi' },
 					_react2.default.createElement(
 						_reactRouterDom.Link,
-						{ onClick: function onClick() {
+						{ to: ref, onClick: function onClick(e) {
+								//e.preventDefault();
+								//onclick :
+								//close nav
+								//toggle state
+								//change css display to none
+								//
 								var items = document.getElementById("navBarList").childNodes;
 								_this3.openNav("navBar", -200, 5000);
 								_this3.toggleNavBar();
 								for (var i = 0; i < items.length; i++) {
 									items[i].style.display = "none";
 								}
-							}, to: ref },
+							} },
 						_react2.default.createElement(
 							'h2',
 							{ className: 'link' },
@@ -38097,7 +38103,10 @@ var navBar = function (_Component) {
 						{ href: '', onClick: function onClick(e) {
 								e.preventDefault();
 								var items = document.getElementById("navBarList").childNodes;
-
+								//onclick, if state is false then
+								//open nav
+								//toggle state
+								//change css display to block
 								if (_this3.state.navBar === false) {
 									_this3.openNav("navBar", 200, 5000);
 									_this3.toggleNavBar();
