@@ -19,16 +19,14 @@ app.all('*', function(req, res, next) {
 app.use('/', express.static(__dirname + '/dist'));
 app.use('/blog/css', express.static(__dirname + '/dist/css')); 
 app.use('/catalog/css', express.static(__dirname + '/dist/css'));
+app.use('/catalog/item/css', express.static(__dirname + '/dist/css'));
 app.use('/css', express.static(__dirname + '/dist/css')); 
 app.use('/scripts', express.static(__dirname + '/dist/scripts'));   
-app.use(cors());
-//app.use('../dist/images', express.static(__dirname + '/dist/images'));
-
+app.use(cors()); 
 
 var urlencodedParser = bodyParser.urlencoded({
     extended : false
-}); 
-
+});  
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/dist/index.html');
@@ -73,7 +71,7 @@ app.post('/postjson', urlencodedParser, function(req, res){
   objStream.push(null);
 
   objStream.on('data', function(chunk){
-    writeStream.write(chunk);
+     writeStream.write(chunk);
   });
   
   //var readStream = fs.createReadStream(obj);
