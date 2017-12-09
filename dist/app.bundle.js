@@ -38072,7 +38072,6 @@ var navBar = function (_Component) {
 					_react2.default.createElement(
 						_reactRouterDom.Link,
 						{ to: ref, onClick: function onClick(e) {
-								e.preventDefault();
 								//onclick :
 								//close nav
 								//toggle state
