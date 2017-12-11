@@ -39741,8 +39741,7 @@ var PreviewMain = function (_Component) {
 		value: function componentWillReceiveProps(newProps) {
 			console.log(newProps);
 			this.resetState(newProps);
-			// reset display to change css width and clear : both
-			this.resetViews();
+			// reset display to change css width and clear : both 
 		}
 	}, {
 		key: 'shouldComponentUpdate',
