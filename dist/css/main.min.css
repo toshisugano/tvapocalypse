@@ -1,6 +1,6 @@
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=VT323");
-.fontScreen, h1, fa-bars, h2, h3 {
+.fontScreen, h1, fa-bars, h2, h3, #previewContent p {
   font-family: 'VT323', monospace, arial; }
 
 html {
@@ -123,15 +123,14 @@ hr {
 
 .previewMain {
   margin-left: -20px;
-  padding-left: 25px;
+  padding-left: 10px;
   padding-top: 15px;
   float: left;
-  border: solid white 1px;
   display: inline;
   position: relative;
   background-color: #9b1fb5;
   width: 75%;
-  min-height: 400px;
+  min-height: 300px;
   margin-bottom: 20px; }
 
 #bioBar {
@@ -211,7 +210,7 @@ hr {
 .bioDetail2 {
   float: left;
   background-color: #f5f3e0;
-  width: 65%;
+  width: 70%;
   height: 100%;
   padding-left: 20px;
   margin-top: 25px;
@@ -249,7 +248,7 @@ hr {
   position: relative;
   display: inline;
   margin-right: 20px;
-  font-size: 1.86rem;
+  font-size: 2rem;
   color: #f5f3e0; }
 
 .previewSide {
@@ -446,10 +445,21 @@ hr {
   width: 100%; }
 
 @media (max-width: 1090px) {
+  .previewMain {
+    width: 100%;
+    clear: both; }
   #previewHeader h2 {
-    display: none; }
+    margin-left: -5px; }
   .itemDetailHr {
-    display: none; } }
+    margin-left: -5px; }
+  .previewSide {
+    width: 100%;
+    margin-left: 5px;
+    padding-right: 20px; }
+  .previewSide li {
+    float: left;
+    clear: both;
+    margin-left: -25px; } }
 
 @media (max-width: 900px) {
   .itemList {
@@ -460,7 +470,10 @@ hr {
     width: 100%; }
   .itemDetail2 {
     float: left;
-    width: 100%; } }
+    width: 100%; }
+  #manBoy {
+    width: 100%;
+    clear: both; } }
 
 @media (max-width: 500px) {
   .itemList {

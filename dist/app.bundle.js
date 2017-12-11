@@ -38215,7 +38215,7 @@ var navBar = function (_Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ id: 'navBar', className: 'row' },
+				{ id: 'navBar' },
 				_react2.default.createElement(
 					'div',
 					{ id: 'navInner' },
@@ -38387,7 +38387,7 @@ var About = function About(props) {
 					_react2.default.createElement(
 						"h3",
 						{ className: "itemDescription" },
-						"I am a writer, geek, toy collector, and comic book collector who is from Atlanta, GA. Once you get to know me, you'll find my interests are all over the map and there isn't anything cookie cutter about me. During my free time, I enjoy reading, writing, and arithmetic.",
+						"writer, geek, toy collector, and comic book collector who is from Atlanta, GA. Once you get to know me, you'll find my interests are all over the map and there isn't anything cookie cutter about me. During my free time, I enjoy reading, writing, and arithmetic.",
 						_react2.default.createElement("br", null),
 						_react2.default.createElement("br", null),
 						"This website/blog is new and I intend to post my thoughts on this blog on a regular basis. Please support my work by making a donation or purchasing stuff from my catalog.",
@@ -38470,7 +38470,8 @@ var Blog = function (_Component) {
 			currMonth: "",
 			currDate: "",
 			currAuthor: "",
-			currTime: ""
+			currTime: "",
+			winWidth: null
 		};
 
 		_this.resetState = _this.resetState.bind(_this);
@@ -38496,11 +38497,17 @@ var Blog = function (_Component) {
 			//console.log("Initial this.state.blogjson.currTitle :"+this.state.blogjson.currTitle);
 			this.getJSON();
 			_vars2.default.setVars();
+			this.setState({
+				winWidth: _vars2.default.winWidth
+			});
 			/* ****** remove this and then chage url to www.thesoogie.com*/
 
 			window.onresize = function () {
 				_vars2.default.headerHeight = document.getElementById('headerImg').height;
 				_vars2.default.setVars();
+				_this2.setState({
+					winWidth: _vars2.default.winWidth
+				});
 				_this2.toggleHeader();
 			};
 		}
@@ -38659,7 +38666,7 @@ var Blog = function (_Component) {
 					_react2.default.createElement(
 						'li',
 						null,
-						_react2.default.createElement(_previewSide2.default, { blogjson: this.state.blogjson })
+						_react2.default.createElement(_previewSide2.default, { blogjson: this.state.blogjson, winWidth: this.state.winWidth })
 					)
 				)
 			);
@@ -39579,7 +39586,8 @@ var PreviewSide = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (PreviewSide.__proto__ || Object.getPrototypeOf(PreviewSide)).call(this, props));
 
 		_this.state = {
-			blogjson: null
+			blogjson: null,
+			winWidth: null
 		};
 		_this.resetState = _this.resetState.bind(_this);
 		_this.renderLists = _this.renderLists.bind(_this);
@@ -39594,8 +39602,10 @@ var PreviewSide = function (_Component) {
 	}, {
 		key: 'resetState',
 		value: function resetState(props) {
+
 			this.setState({
-				blogjson: props.blogjson
+				blogjson: props.blogjson,
+				winWidth: props.winWidth
 			});
 		}
 	}, {
@@ -39611,6 +39621,7 @@ var PreviewSide = function (_Component) {
 			} else {
 				return this.state.blogjson.map(function (item, index) {
 					var newStr = _vars2.default.replaceChar(item.title, " ", "_");
+					//if state.winWidth > 1090 then make the link item.title  
 					return _react2.default.createElement(
 						'li',
 						{ key: index },
@@ -39624,7 +39635,7 @@ var PreviewSide = function (_Component) {
 								null,
 								item.title
 							),
-							' '
+							_react2.default.createElement('br', null)
 						)
 					);
 				});
