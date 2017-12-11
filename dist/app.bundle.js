@@ -35664,9 +35664,7 @@ var App = function (_Component) {
 			}
 
 			if (width <= 500 && width > 400) {
-				var el = document.getElementById('centerSquare');
 				_reactDom2.default.findDOMNode(header).src = url + "header-bg-s.gif";
-				_reactDom2.default.findDOMNode(el).style.marginTop = "100px";
 				_vars2.default.headerHeight = Math.floor(appWidth / 4.70);
 				this.resetVars();
 			}
@@ -40266,7 +40264,7 @@ var Catalog = function (_Component) {
 				squareStyle.zIndex = 100;
 				squareStyle.width = '100%';
 				squareStyle.border = '0px solid white';
-				squareStyle.marginTop = '-100px';
+				squareStyle.marginTop = '-50px';
 			}
 
 			if (scrollTop > catalogHeight) {
