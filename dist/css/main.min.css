@@ -445,6 +445,12 @@ hr {
 #footerContainer {
   width: 100%; }
 
+@media (max-width: 1090px) {
+  #previewHeader h2 {
+    display: none; }
+  .itemDetailHr {
+    display: none; } }
+
 @media (max-width: 900px) {
   .itemList {
     width: 50%; } }

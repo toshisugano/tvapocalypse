@@ -35668,6 +35668,12 @@ var App = function (_Component) {
 				_vars2.default.headerHeight = Math.floor(appWidth / 4.70);
 				this.resetVars();
 			}
+
+			if (width <= 400 && width > 200) {
+				_reactDom2.default.findDOMNode(header).src = url + "header-bg-s.gif";
+				_vars2.default.headerHeight = Math.floor(appWidth / 4.70);
+				this.resetVars();
+			}
 		}
 	}, {
 		key: 'toggleNavBar',
@@ -38466,6 +38472,7 @@ var Blog = function (_Component) {
 			currAuthor: "",
 			currTime: ""
 		};
+
 		_this.resetState = _this.resetState.bind(_this);
 		_this.getJSON = _this.getJSON.bind(_this);
 		_this.updateBlogjson = _this.updateBlogjson.bind(_this);
@@ -38483,16 +38490,24 @@ var Blog = function (_Component) {
 	_createClass(Blog, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
+			var _this2 = this;
+
 			//alert("COMPONENT MOUNTED");
 			//console.log("Initial this.state.blogjson.currTitle :"+this.state.blogjson.currTitle);
 			this.getJSON();
-
+			_vars2.default.setVars();
 			/* ****** remove this and then chage url to www.thesoogie.com*/
+
+			window.onresize = function () {
+				_vars2.default.headerHeight = document.getElementById('headerImg').height;
+				_vars2.default.setVars();
+				_this2.toggleHeader();
+			};
 		}
 	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(newProps) {
-			var _this2 = this;
+			var _this3 = this;
 
 			//alert("received new props :" + newProps); 
 			if (newProps.match.params.id) {
@@ -38504,7 +38519,7 @@ var Blog = function (_Component) {
 				var url = '/blogjson';
 				_axios2.default.get(url).then(function (res) {
 					//change to running reset with res
-					_this2.resetState(newProps);
+					_this3.resetState(newProps);
 				}).catch(function (error) {
 					console.log(error.response);
 				});
@@ -38518,7 +38533,7 @@ var Blog = function (_Component) {
 	}, {
 		key: 'getJSON',
 		value: function getJSON() {
-			var _this3 = this;
+			var _this4 = this;
 
 			//get url from thesoogie server and retrieve data
 			//take that data and then 
@@ -38527,7 +38542,7 @@ var Blog = function (_Component) {
 			//Fetch data from server 
 			_axios2.default.get(url).then(function (res) {
 				//Update client with retrieved server side json 
-				_this3.resetState(res);
+				_this4.resetState(res);
 				//Update server json with mongo json
 				//this.updateBlogjson(); 
 			}).catch(function (error) {
@@ -38596,6 +38611,7 @@ var Blog = function (_Component) {
 				currTime: currTime
 			});
 		}
+
 		//GET data from database and save to server JSON file
 
 	}, {
@@ -38636,7 +38652,8 @@ var Blog = function (_Component) {
 							currMonth: this.state.currMonth,
 							currDate: this.state.currDate,
 							currAuthor: this.state.currAuthor,
-							currTime: this.state.currTime
+							currTime: this.state.currTime,
+							winWidth: _vars2.default.winWidth
 						})
 					),
 					_react2.default.createElement(
@@ -39687,7 +39704,8 @@ var PreviewMain = function (_Component) {
 			month: null,
 			date: null,
 			author: null,
-			time: null
+			time: null,
+			winWidth: null
 		};
 		_this.resetState = _this.resetState.bind(_this);
 		_this.returnArticle = _this.returnArticle.bind(_this);
@@ -39702,6 +39720,8 @@ var PreviewMain = function (_Component) {
 		value: function componentWillReceiveProps(newProps) {
 			console.log(newProps);
 			this.resetState(newProps);
+			// reset display to change css width and clear : both
+			this.resetViews();
 		}
 	}, {
 		key: 'shouldComponentUpdate',
@@ -39718,8 +39738,17 @@ var PreviewMain = function (_Component) {
 				month: response.currMonth,
 				date: response.currDate,
 				author: response.currAuthor,
-				time: response.currTime
+				time: response.currTime,
+				winWidth: response.winWidth
 			});
+		}
+	}, {
+		key: 'resetViews',
+		value: function resetViews() {
+			//if this state winWidth is less than 900
+			// then make previewmain with at 100%
+			// and make the clear both
+			//and make preview side with 100%
 		}
 	}, {
 		key: 'returnArticle',
