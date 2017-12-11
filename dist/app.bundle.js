@@ -35665,6 +35665,7 @@ var App = function (_Component) {
 
 			if (width <= 500 && width > 400) {
 				_reactDom2.default.findDOMNode(header).src = url + "header-bg-s.gif";
+				_reactDom2.default.findDOMNode(document.getElementById('squareMain')).style.marginTop = "100px";
 				_vars2.default.headerHeight = Math.floor(appWidth / 4.70);
 				this.resetVars();
 			}
@@ -38383,16 +38384,26 @@ var About = function About(props) {
 						"This website/blog is new and I intend to post my thoughts on this blog on a regular basis. Please support my work by making a donation or purchasing stuff from my catalog.",
 						_react2.default.createElement("br", null)
 					),
-					_react2.default.createElement("img", { id: "manBoy", src: "./images/manboy.jpg" }),
 					_react2.default.createElement(
-						"h3",
-						{ className: "itemDescription" },
-						"writer, geek, toy collector, and comic book collector who is from Atlanta, GA. Once you get to know me, you'll find my interests are all over the map and there isn't anything cookie cutter about me. During my free time, I enjoy reading, writing, and arithmetic.",
+						"div",
+						{ className: "aboutImg" },
+						_react2.default.createElement("img", { id: "manBoy", src: "./images/manboy.jpg" }),
 						_react2.default.createElement("br", null),
-						_react2.default.createElement("br", null),
-						"This website/blog is new and I intend to post my thoughts on this blog on a regular basis. Please support my work by making a donation or purchasing stuff from my catalog.",
-						_react2.default.createElement("br", null),
-						_react2.default.createElement("br", null)
+						" "
+					),
+					_react2.default.createElement(
+						"div",
+						null,
+						_react2.default.createElement(
+							"h3",
+							{ className: "itemDescription" },
+							"writer, geek, toy collector, and comic book collector who is from Atlanta, GA. Once you get to know me, you'll find my interests are all over the map and there isn't anything cookie cutter about me. During my free time, I enjoy reading, writing, and arithmetic.",
+							_react2.default.createElement("br", null),
+							_react2.default.createElement("br", null),
+							"This website/blog is new and I intend to post my thoughts on this blog on a regular basis. Please support my work by making a donation or purchasing stuff from my catalog.",
+							_react2.default.createElement("br", null),
+							_react2.default.createElement("br", null)
+						)
 					),
 					_react2.default.createElement(
 						"h3",
@@ -39752,14 +39763,6 @@ var PreviewMain = function (_Component) {
 				time: response.currTime,
 				winWidth: response.winWidth
 			});
-		}
-	}, {
-		key: 'resetViews',
-		value: function resetViews() {
-			//if this state winWidth is less than 900
-			// then make previewmain with at 100%
-			// and make the clear both
-			//and make preview side with 100%
 		}
 	}, {
 		key: 'returnArticle',

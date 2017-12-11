@@ -472,9 +472,14 @@ hr {
     float: left;
     width: 100%; }
   #manBoy {
-    width: 100%;
+    width: 100%; }
+  .aboutImg {
+    clear: both; }
+  .itemDescription {
     clear: both; } }
 
 @media (max-width: 500px) {
   .itemList {
-    width: 100%; } }
+    width: 100%; }
+  #centerSquare {
+    margin-top: 100px; } }
