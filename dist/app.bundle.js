@@ -35503,6 +35503,10 @@ var _navBar = __webpack_require__(602);
 
 var _navBar2 = _interopRequireDefault(_navBar);
 
+var _search = __webpack_require__(632);
+
+var _search2 = _interopRequireDefault(_search);
+
 var _preview = __webpack_require__(604);
 
 var _preview2 = _interopRequireDefault(_preview);
@@ -35739,7 +35743,7 @@ var App = function (_Component) {
 							_react2.default.createElement(_reactRouter.Route, { path: '/blog/:id', component: _blog2.default }),
 							_react2.default.createElement(_reactRouter.Route, { path: '/catalog/item/:id', component: _item2.default }),
 							_react2.default.createElement(_reactRouter.Route, { path: '/catalog/:id', component: _catalog2.default }),
-							_react2.default.createElement(_reactRouter.Route, { path: '/contact', component: _preview2.default }),
+							_react2.default.createElement(_reactRouter.Route, { path: '/search', component: _search2.default }),
 							_react2.default.createElement(_reactRouter.Route, { path: '/', component: _preview2.default })
 						),
 						_react2.default.createElement(_footer2.default, null)
@@ -37976,7 +37980,7 @@ var navBar = function (_Component) {
 			navBar: false,
 			date: _vars2.default.dateString,
 			time: _vars2.default.getTime(),
-			links: ['ABOUT', 'BLOG', 'CATALOG', 'CONTACT']
+			links: ['ABOUT', 'BLOG', 'CATALOG', 'SEARCH']
 		};
 
 		_this.resetTime = _this.resetTime.bind(_this);
@@ -39600,7 +39604,7 @@ var PreviewSide = function (_Component) {
 			winWidth: null
 		};
 		_this.resetState = _this.resetState.bind(_this);
-		_this.renderLists = _this.renderLists.bind(_this);
+		//this.renderLists = this.renderLists.bind(this);
 		return _this;
 	}
 
@@ -40608,6 +40612,298 @@ var Footer = function Footer() {
 };
 
 exports.default = Footer;
+
+/***/ }),
+/* 632 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(9);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _axios = __webpack_require__(157);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _searchSide = __webpack_require__(634);
+
+var _searchSide2 = _interopRequireDefault(_searchSide);
+
+var _searchMain = __webpack_require__(633);
+
+var _searchMain2 = _interopRequireDefault(_searchMain);
+
+var _vars = __webpack_require__(71);
+
+var _vars2 = _interopRequireDefault(_vars);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Search = function (_Component) {
+	_inherits(Search, _Component);
+
+	function Search(props) {
+		_classCallCheck(this, Search);
+
+		var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this, props));
+
+		_this.state = {
+			searchParams: [],
+			searchVal: null
+		};
+
+		_this.getVal = _this.getVal.bind(_this);
+		_this.pushParams = _this.pushParams.bind(_this);
+		return _this;
+	}
+
+	_createClass(Search, [{
+		key: 'componentDidMount',
+		value: function componentDidMount(props) {
+			var searchItems = document.getElementById('searchItems');
+			searchItems.addEventListener('click', this.getVal);
+		}
+	}, {
+		key: 'getVal',
+		value: function getVal() {
+			var val = document.getElementById('inputField').value;
+			this.pushParams(val);
+		}
+	}, {
+		key: 'pushParams',
+		value: function pushParams(data) {
+			var arr = this.state.searchParams;
+			arr.push(data);
+			this.setState({
+				searchParams: arr
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'row', id: 'preview' },
+				_react2.default.createElement(
+					'ul',
+					null,
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(_searchMain2.default, null)
+					),
+					_react2.default.createElement(
+						'li',
+						null,
+						_react2.default.createElement(_searchSide2.default, { params: this.state.searchParams })
+					)
+				)
+			);
+		}
+	}]);
+
+	return Search;
+}(_react.Component);
+
+exports.default = Search;
+
+/***/ }),
+/* 633 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(9);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SearchMain = function (_Component) {
+	_inherits(SearchMain, _Component);
+
+	function SearchMain(props) {
+		_classCallCheck(this, SearchMain);
+
+		var _this = _possibleConstructorReturn(this, (SearchMain.__proto__ || Object.getPrototypeOf(SearchMain)).call(this, props));
+
+		_this.state = {};
+
+		return _this;
+	}
+
+	_createClass(SearchMain, [{
+		key: "componentDidMount",
+		value: function componentDidMount(props) {}
+	}, {
+		key: "componentWillReceiveProps",
+		value: function componentWillReceiveProps(newProps) {
+			console.log(newProps);
+			// reset display to change css width and clear : both 
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			return _react2.default.createElement(
+				"div",
+				{ className: "previewMain" },
+				_react2.default.createElement(
+					"div",
+					{ id: "previewHeader" },
+					_react2.default.createElement("input", { id: "inputField", type: "text", name: "search", height: "43" }),
+					_react2.default.createElement(
+						"a",
+						{ id: "searchItems", href: "#" },
+						_react2.default.createElement("img", { id: "searchLens", src: "/images/search.png" })
+					),
+					_react2.default.createElement(
+						"h1",
+						null,
+						"Results : "
+					),
+					_react2.default.createElement("hr", { className: "itemDetailHr" })
+				),
+				_react2.default.createElement("div", { id: "searchParams" })
+			);
+		}
+	}]);
+
+	return SearchMain;
+}(_react.Component);
+
+exports.default = SearchMain;
+
+/***/ }),
+/* 634 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(9);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _vars = __webpack_require__(71);
+
+var _vars2 = _interopRequireDefault(_vars);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SearchSide = function (_Component) {
+	_inherits(SearchSide, _Component);
+
+	function SearchSide(props) {
+		_classCallCheck(this, SearchSide);
+
+		var _this = _possibleConstructorReturn(this, (SearchSide.__proto__ || Object.getPrototypeOf(SearchSide)).call(this, props));
+
+		_this.state = {
+			params: []
+		};
+		_this.resetState = _this.resetState.bind(_this);
+		_this.renderParams = _this.renderParams.bind(_this);
+		return _this;
+	}
+
+	_createClass(SearchSide, [{
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(newProps) {
+			this.resetState(newProps);
+		}
+	}, {
+		key: 'resetState',
+		value: function resetState(props) {
+			this.setState({
+				params: props.params
+			});
+		}
+	}, {
+		key: 'renderParams',
+		value: function renderParams() {
+
+			return this.state.params.map(function (item, index) {
+
+				return _react2.default.createElement(
+					'li',
+					{ className: 'paramList', key: index },
+					_react2.default.createElement(
+						'h3',
+						null,
+						item
+					)
+				);
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'previewSide' },
+				_react2.default.createElement(
+					'div',
+					{ id: 'previewHeader' },
+					_react2.default.createElement(
+						'h2',
+						null,
+						'SEARCHED PARAMS'
+					),
+					_react2.default.createElement('hr', { className: 'itemDetailHr' }),
+					_react2.default.createElement(
+						'ul',
+						null,
+						this.renderParams()
+					)
+				)
+			);
+		}
+	}]);
+
+	return SearchSide;
+}(_react.Component);
+
+exports.default = SearchSide;
 
 /***/ })
 /******/ ]);

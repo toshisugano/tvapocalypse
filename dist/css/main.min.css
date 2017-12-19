@@ -49,6 +49,14 @@ h3 {
   font-size: 25px;
   color: #9b1fb5; }
 
+input {
+  line-height: 1em;
+  width: 45%;
+  color: #9b1fb5;
+  font-family: 'VT323';
+  font-size: 3.5rem;
+  margin-top: 25px; }
+
 li {
   list-style-type: none; }
 
@@ -288,6 +296,16 @@ hr {
   z-index: 10;
   height: 100px; }
 
+#searchLens {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: -10px; }
+
+.paramList {
+  clear: both;
+  float: left; }
+
 .squareMain {
   float: left;
   width: 50px;
@@ -397,8 +415,20 @@ hr {
   display: inline-block;
   position: relative; }
 
-.previewHeader {
-  padding-left: 20px; }
+#previewHeader {
+  overflow: scroll; }
+
+#previewHeader h2 {
+  margin-left: -1px; }
+
+#previewHeader ul {
+  margin-left: -12px; }
+
+#paramHeader {
+  margin-left: -20px;
+  float: left;
+  display: inline-block;
+  position: relative; }
 
 .itemName {
   text-align: center;
