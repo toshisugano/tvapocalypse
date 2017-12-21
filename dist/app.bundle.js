@@ -40687,6 +40687,7 @@ var Search = function (_Component) {
 	}, {
 		key: 'pushParams',
 		value: function pushParams(data) {
+			var matchCt = 0;
 			var arr = this.state.searchParams;
 			arr.push(data);
 			this.setState({

@@ -394,7 +394,7 @@ hr {
 
 .itemHr {
   background-color: #a0d61d;
-  max-width: 100px; }
+  max-width: 110px; }
 
 .itemDetailHr {
   background-color: #a0d61d;
@@ -488,8 +488,7 @@ hr {
     padding-right: 20px; }
   .previewSide li {
     float: left;
-    clear: both;
-    margin-left: -25px; } }
+    clear: both; } }
 
 @media (max-width: 900px) {
   .itemList {
