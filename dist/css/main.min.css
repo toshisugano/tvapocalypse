@@ -302,6 +302,9 @@ hr {
   margin-left: 10px;
   margin-top: -10px; }
 
+#searchResults h3 {
+  margin-left: 10px; }
+
 .paramList {
   clear: both;
   float: left; }
