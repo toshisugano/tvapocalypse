@@ -302,10 +302,30 @@ hr {
   margin-left: 10px;
   margin-top: -10px; }
 
-#searchResults h3 {
-  margin-left: 10px; }
+.searchResults {
+  margin-left: 30px;
+  margin-top: 20px;
+  clear: both;
+  flot: left; }
+
+#loadMore {
+  height: 30px;
+  width: 125px;
+  background-color: #a0d61d;
+  margin-left: 20px;
+  margin-top: 30px; }
+
+#loadMore h3 {
+  color: #9b1fb5;
+  margin-left: 20px;
+  margin-top: -1px;
+  position: relative;
+  diplay: inline-block; }
 
 .paramList {
+  position: relative;
+  display: block;
+  width: 100%;
   clear: both;
   float: left; }
 

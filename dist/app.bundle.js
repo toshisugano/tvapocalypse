@@ -38370,6 +38370,7 @@ var Search = function (_Component) {
 			this.setState({
 				searchResults: data.data
 			});
+			window.scrollTo(0, 10);
 		}
 	}, {
 		key: 'render',
@@ -39390,6 +39391,8 @@ var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(71);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39407,7 +39410,8 @@ var SearchMain = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (SearchMain.__proto__ || Object.getPrototypeOf(SearchMain)).call(this, props));
 
 		_this.state = {
-			searchResults: []
+			searchResults: [],
+			links: []
 		};
 
 		_this.resetState = _this.resetState.bind(_this);
@@ -39416,64 +39420,97 @@ var SearchMain = function (_Component) {
 	}
 
 	_createClass(SearchMain, [{
-		key: "componentDidMount",
+		key: 'componentDidMount',
 		value: function componentDidMount(props) {}
 	}, {
-		key: "componentWillReceiveProps",
+		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(newProps) {
-			this.resetState(newProps.results);
+			this.resetState(newProps);
 		}
 	}, {
-		key: "resetState",
+		key: 'resetState',
 		value: function resetState(props) {
+			var _this2 = this;
+
 			this.setState({
-				searchResults: props
+				searchResults: props.results
+			});
+
+			this.state.searchResults.forEach(function (item, index) {
+				var url = '/blog/';
+				var split = item.title.split('');
+
+				for (var i = 0; i < split.length; i++) {
+					if (split[i] === ' ') {
+						split[i] = '_';
+					}
+					if (i === split.length) {
+						alert("YOU");
+					}
+				};
+
+				var arr = _this2.state.links;
+				arr.push(url + split.join(''));
+				console.log(arr);
+				_this2.setState({
+					links: arr
+				});
 			});
 		}
 	}, {
-		key: "renderResults",
+		key: 'renderResults',
 		value: function renderResults() {
+			var _this3 = this;
+
 			return this.state.searchResults.map(function (item, index) {
 				return _react2.default.createElement(
-					"li",
-					{ id: "searchResults", key: index },
+					'li',
+					{ className: 'searchResults', key: index },
 					_react2.default.createElement(
-						"h3",
-						null,
-						item.title
+						_reactRouterDom.Link,
+						{ to: _this3.state.links[index] },
+						_react2.default.createElement(
+							'h3',
+							null,
+							item.title
+						)
 					)
 				);
 			});
 		}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
-				"div",
-				{ className: "previewMain" },
+				'div',
+				{ className: 'previewMain' },
 				_react2.default.createElement(
-					"div",
-					{ id: "previewHeader" },
-					_react2.default.createElement("input", { id: "inputField", type: "text", name: "search", height: "43" }),
+					'div',
+					{ id: 'previewHeader' },
+					_react2.default.createElement('input', { id: 'inputField', type: 'text', name: 'search', height: '43' }),
 					_react2.default.createElement(
-						"a",
-						{ id: "searchItems", href: "#" },
-						_react2.default.createElement("img", { id: "searchLens", src: "/images/search.png" })
+						'a',
+						{ id: 'searchItems', onClick: function onClick() {
+								setTimeout(function () {
+									window.scrollTo(0, 1);
+								}, 1000);
+							}, href: '#' },
+						_react2.default.createElement('img', { id: 'searchLens', src: '/images/search.png' })
 					),
 					_react2.default.createElement(
-						"h1",
+						'h1',
 						null,
-						"Results : ",
+						'Results : ',
 						this.state.searchResults.length
 					),
-					_react2.default.createElement("hr", { className: "itemDetailHr" }),
+					_react2.default.createElement('hr', { className: 'itemDetailHr' }),
 					_react2.default.createElement(
-						"div",
+						'div',
 						null,
 						this.renderResults()
 					)
 				),
-				_react2.default.createElement("div", { id: "searchParams" })
+				_react2.default.createElement('div', { id: 'searchParams' })
 			);
 		}
 	}]);
@@ -39756,7 +39793,6 @@ var Blog = function (_Component) {
 				//if state is undefined, then reset state with newprops
 				var url = '/blogjson';
 				_axios2.default.get(url).then(function (res) {
-					//change to running reset with res
 					_this3.resetState(newProps);
 				}).catch(function (error) {
 					console.log(error.response);
@@ -39953,7 +39989,6 @@ var PreviewSide = function (_Component) {
 			winWidth: null
 		};
 		_this.resetState = _this.resetState.bind(_this);
-		//this.renderLists = this.renderLists.bind(this);
 		return _this;
 	}
 
@@ -39965,7 +40000,6 @@ var PreviewSide = function (_Component) {
 	}, {
 		key: 'resetState',
 		value: function resetState(props) {
-
 			this.setState({
 				blogjson: props.blogjson,
 				winWidth: props.winWidth
@@ -40023,6 +40057,27 @@ var PreviewSide = function (_Component) {
 						'ul',
 						null,
 						this.renderLists()
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ id: 'previewMore' },
+					_react2.default.createElement(
+						'a',
+						{ onClick: function onClick(e) {
+								e.preventDefault();
+								alert("clicked");
+							}, href: '#' },
+						' ',
+						_react2.default.createElement(
+							'div',
+							{ id: 'loadMore' },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'LOAD MORE'
+							)
+						)
 					)
 				)
 			);

@@ -41,6 +41,10 @@ app.get('/catalog/:id', function(req, res ){
   res.sendFile(__dirname + '/dist/blog.html'); 
 }); 
 
+app.get('/search', function(req, res ){  
+  res.sendFile(__dirname + '/dist/blog.html'); 
+}); 
+
 app.get('/catalog/item/:id', function(req, res ){  
   res.sendFile(__dirname + '/dist/blog.html'); 
 }); 
@@ -50,9 +54,29 @@ app.get('/blog/:id', function(req, res ){
   res.sendFile(__dirname + '/dist/blog.html');
 });  
 
+
+
 app.get('/blogjson', function(req, res){
-  res.sendFile(__dirname + '/blog.json');
+  res.sendFile(__dirname + '/dist/blog.json');
 });
+
+app.post('/postBlog', urlencodedParser, function(req, res){
+  console.log(req.body);
+  var obj = Object.keys(req.body)[0];
+
+  var writeStream = fs.createWriteStream(__dirname + '/dist/blog.json');
+  var objStream = new stream.Readable();
+  objStream.push(obj);
+  objStream.push(null);
+
+  objStream.on('data', function(chunk){
+     writeStream.write(chunk);
+  });
+
+});
+
+
+
 
 app.get('/inventoryjson', function(req, res){
   console.log("req received");
@@ -90,7 +114,7 @@ app.listen(port);
 
 
 
-
+//when 
 
 
 
