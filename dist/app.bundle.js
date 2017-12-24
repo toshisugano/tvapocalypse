@@ -38370,7 +38370,6 @@ var Search = function (_Component) {
 			this.setState({
 				searchResults: data.data
 			});
-			window.scrollTo(0, 10);
 		}
 	}, {
 		key: 'render',
