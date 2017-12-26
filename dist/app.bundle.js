@@ -39429,13 +39429,14 @@ var SearchMain = function (_Component) {
 	}, {
 		key: 'resetState',
 		value: function resetState(props) {
-			var _this2 = this;
-
 			this.setState({
 				searchResults: props.results
 			});
-
-			this.state.searchResults.forEach(function (item, index) {
+		}
+	}, {
+		key: 'renderResults',
+		value: function renderResults() {
+			return this.state.searchResults.map(function (item, index) {
 				var url = '/blog/';
 				var split = item.title.split('');
 
@@ -39443,31 +39444,14 @@ var SearchMain = function (_Component) {
 					if (split[i] === ' ') {
 						split[i] = '_';
 					}
-					if (i === split.length) {
-						alert("YOU");
-					}
-				};
+				}
 
-				var arr = _this2.state.links;
-				arr.push(url + split.join(''));
-				console.log(arr);
-				_this2.setState({
-					links: arr
-				});
-			});
-		}
-	}, {
-		key: 'renderResults',
-		value: function renderResults() {
-			var _this3 = this;
-
-			return this.state.searchResults.map(function (item, index) {
 				return _react2.default.createElement(
 					'li',
 					{ className: 'searchResults', key: index },
 					_react2.default.createElement(
-						_reactRouterDom.Link,
-						{ to: _this3.state.links[index] },
+						'a',
+						{ href: url + split.join(''), target: '_blank' },
 						_react2.default.createElement(
 							'h3',
 							null,
