@@ -55,7 +55,6 @@ app.get('/blog/:id', function(req, res ){
 });  
 
 
-
 app.get('/blogjson', function(req, res){
   res.sendFile(__dirname + '/dist/blog.json');
 });
@@ -74,8 +73,6 @@ app.post('/postBlog', urlencodedParser, function(req, res){
   });
 
 });
-
-
 
 
 app.get('/inventoryjson', function(req, res){
