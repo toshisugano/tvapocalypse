@@ -40314,19 +40314,19 @@ var Item = function (_Component) {
 
 			if (joinServer == "atalog/ite") {
 				name = split.slice(35, split.length);
-				item = "t-shirt-" + name.join("") + "-view.jpg";
+				item = "t-shirt-" + name.join("") + "-view.png";
 				url = prefixC + item;
 			}
 
 			if (join == "catalog/ite") {
 				name = split.slice(46, split.length);
-				item = "t-shirt-" + name.join("") + "-view.jpg";
+				item = "t-shirt-" + name.join("") + "-view.png";
 				url = prefixC + item;
 			}
 
 			if (join == "/catalog/it") {
 				name = split.slice(47, split.length);
-				item = "t-shirt-" + name.join("") + "-view.jpg";
+				item = "t-shirt-" + name.join("") + "-view.png";
 				url = prefixC + item;
 			}
 
