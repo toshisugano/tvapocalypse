@@ -94,9 +94,8 @@ app.post('/postjson', urlencodedParser, function(req, res){
   objStream.on('data', function(chunk){
      writeStream.write(chunk);
   });
- 
-  objstream.end(); 
   
+
   //var readStream = fs.createReadStream(obj);
  
   //req.pipe(writeStream);  
