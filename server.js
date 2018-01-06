@@ -95,7 +95,6 @@ app.post('/postjson', urlencodedParser, function(req, res){
      writeStream.write(chunk);
   });
   
-
   //var readStream = fs.createReadStream(obj);
  
   //req.pipe(writeStream);  
@@ -111,7 +110,8 @@ app.post('/postjson', urlencodedParser, function(req, res){
 app.listen(port);
 
 
- 
+
+//when 
 
 
 
