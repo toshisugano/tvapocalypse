@@ -164,7 +164,7 @@ hr {
   display: block; }
 
 #previewHeader {
-  margin-top: -20px;
+  margin-top: 0px;
   position: relative;
   display: block;
   width: 100%;
@@ -182,7 +182,7 @@ hr {
   margin-left: 20px; }
 
 #previewHeader h3 {
-  margin-left: -20px;
+  margin-left: -25px;
   color: #a0d61d;
   float: left; }
 
@@ -266,7 +266,8 @@ hr {
   position: relative;
   background-color: #9b1fb5;
   width: 20%;
-  margin-bottom: 30px; }
+  margin-bottom: 55px;
+  padding-top: 20px; }
 
 #searchButton {
   width: 100%;
@@ -312,7 +313,7 @@ hr {
   height: 30px;
   width: 125px;
   background-color: #a0d61d;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-top: 30px; }
 
 #loadMore h3 {
