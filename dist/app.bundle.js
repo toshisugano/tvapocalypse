@@ -39540,7 +39540,7 @@ var Preview = function Preview(props) {
 						_react2.default.createElement(
 							"section",
 							{ id: "index-container" },
-							_react2.default.createElement("iframe", { width: "560", height: "315", src: "https://www.youtube.com/embed/Y03xlzP5-_w?rel=0", frameborder: "0", allow: "autoplay; encrypted-media", allowfullscreen: true })
+							_react2.default.createElement("iframe", { width: "560", height: "315", src: "https://player.vimeo.com/video/284064782", frameborder: "0", allow: "autoplay; encrypted-media", allowfullscreen: true })
 						)
 					)
 				),
